@@ -1,102 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prakash Rajan | Digital Marketer & SEO Specialist</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
-        header { text-align: center; padding: 60px 20px; background: #1a2a6c; color: white; border-radius: 15px; margin-bottom: 30px; }
-        h1 { margin: 0; font-size: 3em; text-transform: uppercase; letter-spacing: 2px; }
-        .tagline { font-size: 1.3em; opacity: 0.9; margin-top: 10px; }
-        section { background: white; padding: 35px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 25px; }
-        h2 { color: #1a2a6c; border-left: 5px solid #f39c12; padding-left: 15px; margin-top: 0; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .experience-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-        .experience-item:last-child { border-bottom: none; }
-        .job-title { font-weight: bold; color: #2c3e50; font-size: 1.2em; }
-        .company { color: #2980b9; font-weight: 600; }
-        .date { color: #7f8c8d; font-size: 0.9em; float: right; }
-        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; }
-        .skills-list li { background: #e8f0fe; color: #1a2a6c; padding: 5px 15px; border-radius: 20px; font-size: 0.9em; font-weight: bold; }
-        footer { text-align: center; padding: 30px; color: #7f8c8d; border-top: 1px solid #ddd; }
-        a { color: #2980b9; text-decoration: none; }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .date { float: none; display: block; margin-bottom: 5px; } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prakash Rajan | Digital Marketer & SEO Specialist</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0e0d;
+      --paper: #f5f1eb;
+      --accent: #c94f2c;
+      --accent2: #2c6e8a;
+      --muted: #7a7065;
+      --border: #ddd8cf;
+      --card: #fff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(245,241,235,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 4vw;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+      text-transform: uppercase; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    header {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 8rem 4vw 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-label {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05; color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--muted); max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block; padding: 0.75rem 1.8rem;
+      border-radius: 2px; font-weight: 600; font-size: 0.88rem;
+      letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none;
+      transition: all .25s;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff; border: 2px solid var(--accent);
+    }
+    .btn-primary:hover { background: transparent; color: var(--accent); }
+    .btn-outline {
+      background: transparent; color: var(--ink); border: 2px solid var(--ink);
+    }
+    .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+    /* hero right – stats card */
+    .hero-stats {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem; color: var(--accent); line-height: 1;
+    }
+    .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 6rem 4vw; }
+    .section-wrap { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1; margin-bottom: 3rem;
+    }
+    .divider { width: 48px; height: 3px; background: var(--accent); margin: 1rem 0 2.5rem; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; }
+    .about-text p { color: var(--muted); margin-bottom: 1.2rem; }
+    .highlight-box {
+      background: var(--paper);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem; font-style: italic;
+      color: var(--ink); font-size: 1.05rem;
+      margin: 1.5rem 0;
+    }
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .info-list li { display: flex; flex-direction: column; }
+    .info-list .lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; }
+    .info-list .val { color: var(--ink); font-weight: 500; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 1.8rem; transition: border-color .2s, transform .2s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .skill-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .skill-card p { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── TOOLS ── */
+    #tools { background: var(--ink); color: var(--paper); }
+    #tools h2, #tools .section-tag { color: var(--paper); }
+    #tools .divider { background: var(--accent); }
+    .tools-pills { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .pill {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.5rem 1.2rem;
+      font-size: 0.88rem; border-radius: 2px;
+      color: #e8e4dd; transition: background .2s;
+    }
+    .pill:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* ── PROJECTS ── */
+    .project-category { margin-bottom: 3.5rem; }
+    .cat-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent2);
+      border-bottom: 2px solid var(--accent2);
+      padding-bottom: 0.25rem; margin-bottom: 1.5rem;
+    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.2rem; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 1.5rem; transition: all .2s;
+    }
+    .project-card:hover { border-color: var(--accent); box-shadow: 4px 4px 0 var(--accent); }
+    .project-card .client { font-weight: 600; margin-bottom: 0.4rem; }
+    .project-card .location { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.8rem; letter-spacing: 0.05em; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      background: var(--paper); color: var(--muted);
+      font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: 2px;
+      font-weight: 500;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: grid; grid-template-columns: 160px 1fr;
+      gap: 2rem; padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .tl-date { font-size: 0.85rem; color: var(--muted); font-weight: 500; padding-top: 0.2rem; }
+    .tl-body h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin-bottom: 0.2rem; }
+    .tl-company { font-size: 0.88rem; color: var(--accent); font-weight: 600; margin-bottom: 0.8rem; }
+    .tl-body ul { padding-left: 1.2rem; }
+    .tl-body li { font-size: 0.93rem; color: var(--muted); margin-bottom: 0.4rem; }
+
+    /* ── EDUCATION ── */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .edu-card {
+      background: var(--card); border: 1px solid var(--border); padding: 2rem;
+      position: relative; overflow: hidden;
+    }
+    .edu-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%; background: var(--accent);
+    }
+    .edu-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 0.3rem; }
+    .edu-card .univ { font-size: 0.88rem; color: var(--muted); }
+    .edu-card .year { font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-top: 0.5rem; }
+
+    /* ── TRAINING ── */
+    #training { background: var(--ink); color: var(--paper); }
+    #training h2 { color: var(--paper); }
+    #training .section-tag { color: #e8b97e; }
+    #training .divider { background: #e8b97e; }
+    .training-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 2.5rem;
+      max-width: 700px;
+    }
+    .training-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; }
+    .training-card .count {
+      font-family: 'DM Serif Display', serif; font-size: 4rem;
+      color: #e8b97e; line-height: 1; margin-bottom: 1rem;
+    }
+    .training-topics { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+    .training-topics li {
+      background: rgba(255,255,255,0.08);
+      padding: 0.4rem 1rem; font-size: 0.85rem; color: #ccc;
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-row { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-icon { font-size: 1.3rem; margin-top: 0.1rem; }
+    .contact-detail .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 700; }
+    .contact-detail .val { color: var(--ink); font-weight: 500; }
+    .contact-detail a { color: var(--ink); text-decoration: none; }
+    .contact-detail a:hover { color: var(--accent); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input, .contact-form textarea {
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--card); color: var(--ink);
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+      outline: none; border-radius: 2px; transition: border-color .2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { height: 140px; resize: vertical; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a0908; color: #7a7065;
+      text-align: center; padding: 2rem 4vw;
+      font-size: 0.85rem;
+    }
+    footer span { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-grid, .about-grid, .edu-grid, .contact-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      nav .nav-links { display: none; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Prakash Rajan</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
 <header>
-    <h1>Prakash Rajan</h1>
-    <p class="tagline">Digital Marketer | SEO Specialist | BE (CS) & MBA (Marketing)</p>
+  <div class="hero-grid">
+    <div class="fade-in">
+      <p class="hero-label">Digital Marketer &amp; SEO Specialist</p>
+      <h1>Prakash<br /><em>Rajan</em></h1>
+      <p class="hero-desc">
+        BE (CS) + MBA (Marketing) — combining technical depth with marketing strategy to deliver measurable SEO results for clients across the USA, Australia, UAE, and India.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-stats fade-in" style="transition-delay:.15s">
+      <div class="stat-item">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Countries Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Client Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">25+</div>
+        <div class="stat-label">Students Trained</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
 </header>
 
-<section>
-    <h2>About Me</h2>
-    <p>Strategic Digital Marketing professional with a unique background in Computer Science (BE) and Marketing (MBA). I possess expertise in technical SEO, WordPress management, and AI-driven content workflows.</p>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap about-grid">
+    <div class="about-text fade-in">
+      <p class="section-tag">About Me</p>
+      <h2>Strategic thinker.<br />Results-driven marketer.</h2>
+      <div class="divider"></div>
+      <p>I'm a Digital Marketing professional based in Coimbatore, India, with a rare combination of a Computer Science engineering background and an MBA in Marketing. This dual expertise lets me bridge technical SEO and business growth strategies seamlessly.</p>
+      <div class="highlight-box">
+        "From resolving crawl errors to closing ranking gaps — I take a 360° view of every project, blending data, content, and technical precision."
+      </div>
+      <p>Over the years, I've managed international SEO campaigns, built local presence via Google My Business, developed WordPress websites, and trained the next generation of digital marketers.</p>
+    </div>
+    <div class="fade-in" style="transition-delay:.1s">
+      <ul class="info-list" style="margin-top:5.5rem">
+        <li><span class="lbl">Location</span><span class="val">73A, AV Nagar, Sowripalayam, Coimbatore</span></li>
+        <li><span class="lbl">Phone</span><span class="val">+91 77089 79890</span></li>
+        <li><span class="lbl">Email</span><span class="val">pks.kgm@gmail.com</span></li>
+        <li><span class="lbl">Website</span><span class="val"><a href="http://www.courseandcontent.com" target="_blank" style="color:var(--accent);text-decoration:none;">courseandcontent.com</a></span></li>
+        <li><span class="lbl">Education</span><span class="val">BE (CS) · MBA Marketing</span></li>
+        <li><span class="lbl">Availability</span><span class="val">Open to Freelance &amp; Full-time</span></li>
+      </ul>
+    </div>
+  </div>
 </section>
 
-<div class="grid">
-    <section>
-        <h2>Skills</h2>
-        <ul class="skills-list">
-            <li>SEO</li>
-            <li>WordPress Development</li>
-            <li>Content Writing</li>
-            <li>Poster Design</li>
-            <li>Social Media Management</li>
-        </ul>
-    </section>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <p class="section-tag fade-in">What I Do</p>
+    <h2 class="fade-in">Core Skills</h2>
+    <div class="divider fade-in"></div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🔍</div>
+        <h3>On-Page SEO</h3>
+        <p>Meta optimization, heading structure, internal linking, schema markup, and content relevance tuning for search visibility.</p>
+      </div>
+      <div class="skill-card fade-in" style="transition-delay:.05s">
+        <div class="skill-icon">🔗</div>
+        <h3>Off-Page SEO</h3>
+        <p>Link building, guest posting, citation building, and authority-boosting strategies for sustainable SERP growth.</p>
+      </div>
+      <div class="skill-card fade-in" style="transition-delay:.1s">
+        <div class="skill-icon">🗺️</div>
+        <h3>Local SEO &amp; GMB</h3>
+        <p>Google Business Profile setup and optimization, local citation management, review strategy, and map pack ranking.</p>
+      </div>
+      <div class="skill-card fade-in" style="transition-delay:.15s">
+        <div class="skill-icon">🔑</div>
+        <h3>Keyword Research</h3>
+        <p>Competitor gap analysis, search intent mapping, long-tail identification, and keyword clustering for content strategy.</p>
+      </div>
+      <div class="skill-card fade-in" style="transition-delay:.2s">
+        <div class="skill-icon">✍️</div>
+        <h3>Content Writing</h3>
+        <p>SEO blogs, website copy, service page content, and structured content that ranks and converts.</p>
+      </div>
+      <div class="skill-card fade-in" style="transition-delay:.25s">
+        <div class="skill-icon">🌐</div>
+        <h3>WordPress Development</h3>
+        <p>Theme setup, plugin configuration, speed optimization, and full website builds for small to mid-size businesses.</p>
+      </div>
+      <div class="skill-card fade-in" style="transition-delay:.3s">
+        <div class="skill-icon">📊</div>
+        <h3>SEO Audits &amp; Reporting</h3>
+        <p>Technical audits, monthly performance dashboards, and actionable insights using GSC and GA data.</p>
+      </div>
+      <div class="skill-card fade-in" style="transition-delay:.35s">
+        <div class="skill-icon">🎨</div>
+        <h3>Social Media Design</h3>
+        <p>Eye-catching Canva creatives, brand-consistent poster design, and social media content for various platforms.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section>
-        <h2>Technical Toolkit</h2>
-        <p><strong>SEO Tools:</strong> Semrush, Ubersuggest, SEranking, Keywords Everywhere.</p>
-        <p><strong>Platforms:</strong> WordPress, Google My Business, Canva.</p>
-    </section>
-</div>
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-wrap">
+    <p class="section-tag fade-in">Tech Stack</p>
+    <h2 class="fade-in">Tools &amp; Platforms</h2>
+    <div class="divider fade-in"></div>
+    <div class="tools-pills fade-in">
+      <span class="pill">Google Search Console</span>
+      <span class="pill">Google Analytics</span>
+      <span class="pill">SEMrush</span>
+      <span class="pill">Ahrefs</span>
+      <span class="pill">Ubersuggest</span>
+      <span class="pill">SE Ranking</span>
+      <span class="pill">Keywords Everywhere</span>
+      <span class="pill">Google My Business</span>
+      <span class="pill">WordPress</span>
+      <span class="pill">Canva</span>
+      <span class="pill">Yoast SEO</span>
+      <span class="pill">Screaming Frog</span>
+      <span class="pill">Google Docs / Sheets</span>
+    </div>
+  </div>
+</section>
 
-<section>
-    <h2>Work Experience</h2>
-    
-    <div class="experience-item">
-        <span class="date">2023 - Present</span>
-        <div class="job-title">Digital Marketing Trainer & Freelancer</div>
-        <div class="company">Course and Content</div>
-        <p>Specializing in training, poster design, and professional content writing.</p>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <p class="section-tag fade-in">Portfolio</p>
+    <h2 class="fade-in">Projects Handled</h2>
+    <div class="divider fade-in"></div>
+
+    <!-- International SEO -->
+    <div class="project-category fade-in">
+      <div class="cat-label">🌍 International SEO</div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="client">Alavon Cremation</div>
+          <div class="location">📍 Central Florida, USA</div>
+          <div class="tags"><span class="tag">Off-page SEO</span><span class="tag">Monthly Reports</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">Naples Cremation Services</div>
+          <div class="location">📍 Southwest Florida, USA</div>
+          <div class="tags"><span class="tag">Off-page SEO</span><span class="tag">Monthly Reports</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">Auto Kit Accessories</div>
+          <div class="location">📍 Bundaberg, Australia</div>
+          <div class="tags"><span class="tag">Off-page SEO</span><span class="tag">Monthly Reporting</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">Duralloy &amp; Duratray Body Parts</div>
+          <div class="location">📍 Australia</div>
+          <div class="tags"><span class="tag">Off-page SEO</span><span class="tag">Keyword Research</span><span class="tag">Monthly Reports</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">VS Dental Care</div>
+          <div class="location">📍 Coimbatore, India</div>
+          <div class="tags"><span class="tag">Off-page SEO</span><span class="tag">Monthly Reporting</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">Zeta ERP &amp; HRMS Software</div>
+          <div class="location">📍 Dubai, UAE</div>
+          <div class="tags"><span class="tag">Off-page SEO</span><span class="tag">Monthly Reports</span></div>
+        </div>
+      </div>
     </div>
 
-    <div class="experience-item">
-        <span class="date">2020 - 2023</span>
-        <div class="job-title">SEO Specialist</div>
-        <div class="company">Macronimous Web Solutions, Coimbatore</div>
-        <ul>
+    <!-- Local SEO -->
+    <div class="project-category fade-in">
+      <div class="cat-label">🦷 Local &amp; Advanced SEO</div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="client">Haddad Dental Smiles</div>
+          <div class="location">📍 Pennsylvania, USA</div>
+          <div class="tags"><span class="tag">On-page SEO</span><span class="tag">Off-page SEO</span><span class="tag">Keyword Research</span><span class="tag">Local SEO</span><span class="tag">Monthly Reports</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">Highland Family Dental</div>
+          <div class="location">📍 Kentucky, USA</div>
+          <div class="tags"><span class="tag">Full SEO</span><span class="tag">Keyword Research</span><span class="tag">Local SEO</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">Jo Electrical Works</div>
+          <div class="location">📍 Brisbane, Australia</div>
+          <div class="tags"><span class="tag">Full SEO Strategy</span><span class="tag">Keyword Research</span><span class="tag">Local SEO</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">Allentown Optical</div>
+          <div class="location">📍 Pennsylvania, USA</div>
+          <div class="tags"><span class="tag">Off-page SEO</span><span class="tag">SEO Audit</span><span class="tag">Monthly Reports</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GMB -->
+    <div class="project-category fade-in">
+      <div class="cat-label">📍 Google My Business</div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="client">Aarthi Drone Service</div>
+          <div class="location">📍 Mayiladuthurai, India</div>
+          <div class="tags"><span class="tag">GMB Setup</span><span class="tag">Profile Optimization</span><span class="tag">Local Rankings</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">Anbae Sivam Funeral Service</div>
+          <div class="location">📍 Rasipuram, India</div>
+          <div class="tags"><span class="tag">GMB Optimization</span><span class="tag">Local Visibility</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web & Social -->
+    <div class="project-category fade-in">
+      <div class="cat-label">🌐 Website &amp; Social Media</div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="client">Course and Content</div>
+          <div class="location">📍 Coimbatore, India</div>
+          <div class="tags"><span class="tag">WordPress Dev</span><span class="tag">SEO Content</span><span class="tag">Content Structuring</span></div>
+        </div>
+        <div class="project-card">
+          <div class="client">Auravedic Beauty</div>
+          <div class="location">📍 Social Media</div>
+          <div class="tags"><span class="tag">Poster Design</span><span class="tag">Canva Creatives</span><span class="tag">Social Media</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-wrap">
+    <p class="section-tag fade-in">Career</p>
+    <h2 class="fade-in">Work Experience</h2>
+    <div class="divider fade-in"></div>
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="tl-date">2023 – Present</div>
+        <div class="tl-body">
+          <h3>Digital Marketing Trainer &amp; Freelancer</h3>
+          <div class="tl-company">Course and Content, Coimbatore</div>
+          <ul>
+            <li>Running freelance SEO campaigns for clients across USA, Australia, and India.</li>
+            <li>Providing training programs in SEO, content writing, and social media to 25+ students.</li>
+            <li>Building and managing WordPress websites with SEO-optimized content.</li>
+            <li>Handling GMB setup and optimization for local businesses.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="tl-date">2020 – 2023</div>
+        <div class="tl-body">
+          <h3>SEO Specialist</h3>
+          <div class="tl-company">Macronimous Web Solutions, Coimbatore</div>
+          <ul>
             <li>Achieved top 3 rankings for international clients using comprehensive SEO strategies.</li>
             <li>Resolved technical crawl errors and improved mobile responsiveness.</li>
-        </ul>
-    </div>
-
-    <div class="experience-item">
-        <span class="date">2018 - 2020</span>
-        <div class="job-title">SEO Analyst</div>
-        <div class="company">Eshepherd Solutions, Coimbatore</div>
-        <ul>
+            <li>Managed multiple international accounts in the USA and Australia simultaneously.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="tl-date">2018 – 2020</div>
+        <div class="tl-body">
+          <h3>SEO Analyst</h3>
+          <div class="tl-company">Eshepherd Solutions, Coimbatore</div>
+          <ul>
             <li>Managed high-level keyword research and link-building campaigns.</li>
             <li>Analyzed user behavior to identify conversion opportunities.</li>
-        </ul>
+            <li>Delivered monthly performance reports and strategic recommendations.</li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section>
-    <h2>Education</h2>
-    <p><strong>MBA Marketing</strong> | Manonmanium Sundaranar University (2021)</p>
-    <p><strong>BE Computer Science</strong> | KSR College of Technology (2013)</p>
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-wrap">
+    <p class="section-tag fade-in">Academic Background</p>
+    <h2 class="fade-in">Education</h2>
+    <div class="divider fade-in"></div>
+    <div class="edu-grid">
+      <div class="edu-card fade-in">
+        <h3>MBA – Marketing</h3>
+        <div class="univ">Manonmanium Sundaranar University</div>
+        <div class="year">2021</div>
+      </div>
+      <div class="edu-card fade-in" style="transition-delay:.1s">
+        <h3>BE – Computer Science</h3>
+        <div class="univ">KSR College of Technology</div>
+        <div class="year">2013</div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- TRAINING -->
+<section id="training">
+  <div class="section-wrap">
+    <p class="section-tag fade-in">Mentorship</p>
+    <h2 class="fade-in">Training &amp; Mentorship</h2>
+    <div class="divider fade-in"></div>
+    <div class="training-card fade-in">
+      <h3>Digital Marketing Trainer</h3>
+      <div class="count">25+</div>
+      <p style="color:#ccc;font-size:0.95rem;">Students trained in practical digital marketing skills, covering real projects and industry tools.</p>
+      <ul class="training-topics">
+        <li>SEO (On-page &amp; Off-page)</li>
+        <li>Keyword Research</li>
+        <li>Content Writing</li>
+        <li>Social Media Marketing</li>
+        <li>Practical Project Guidance</li>
+        <li>WordPress Basics</li>
+        <li>Google Analytics</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <p class="section-tag fade-in">Let's Work Together</p>
+    <h2 class="fade-in">Get in Touch</h2>
+    <div class="divider fade-in"></div>
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <div class="contact-row">
+          <span class="contact-icon">📞</span>
+          <div class="contact-detail">
+            <div class="label">Phone</div>
+            <div class="val"><a href="tel:+917708979890">+91 77089 79890</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">✉️</span>
+          <div class="contact-detail">
+            <div class="label">Email</div>
+            <div class="val"><a href="mailto:pks.kgm@gmail.com">pks.kgm@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">📍</span>
+          <div class="contact-detail">
+            <div class="label">Address</div>
+            <div class="val">73A, AV Nagar, Sowripalayam, Coimbatore</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">🌐</span>
+          <div class="contact-detail">
+            <div class="label">Website</div>
+            <div class="val"><a href="http://www.courseandcontent.com" target="_blank">courseandcontent.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in" style="transition-delay:.1s">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <input type="text" placeholder="Subject" />
+          <textarea placeholder="Your Message"></textarea>
+          <button type="submit" class="btn btn-primary" style="border:none;cursor:pointer;width:fit-content;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    <p>Contact: 7708979890 | pks.kgm@gmail.com</p>
-    <p>73A, AV Nagar, Sowripalayam, Coimbatore</p>
-    <p><a href="http://www.courseandcontent.com" target="_blank">www.courseandcontent.com</a></p>
+  <p>© 2025 <span>Prakash Rajan</span>. Digital Marketer &amp; SEO Specialist · Coimbatore, India</p>
 </footer>
 
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Contact form stub
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('Thank you for reaching out! Prakash will get back to you soon.');
+    e.target.reset();
+  }
+</script>
 </body>
 </html>
